@@ -1,0 +1,43 @@
+
+<div>
+
+<mat-grid-list cols="6" rowHeight="2:1">
+  <mat-grid-tile> 
+  </mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+</mat-grid-list>
+</div>
+
+<div *ngFor="let item of trendingList">
+  <label>{{item.original_title}}</label>
+  {{item.poster_path}}
+  <img src = "/item.poster_path" width="1" height="1" />
+</div>
+
+
+<div class="col-md-3">
+
+  <div class="card card-stats">
+      <div class="card-header card-header-warning card-header-icon">
+          <div class="card-icon">
+              <i class="material-icons">content_copy</i>
+          </div>
+          <p class="card-category">Admin Roles Created</p>
+          <a [routerLink]="['../user-list']">Maintain User</a>
+          <h3 class="card-title">
+              -
+              <small>Admins</small>
+          </h3>
+      </div>
+      <div class="card-footer">
+          <div class="stats">
+              <i class="material-icons text-warning">face</i>
+              <a [routerLink]="['../user-list']">Create, Modify and Delete Admins can test</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+

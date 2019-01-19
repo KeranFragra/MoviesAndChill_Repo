@@ -7,6 +7,8 @@ import { MatSelect } from '../../../node_modules/@angular/material/select';
 import { BrowseListService } from './browse-list.service';
 import { Trending } from '../Model/Trending';
 import { Movie } from '../Model/Movie';
+import { Router } from '../../../node_modules/@angular/router';
+import { MovieService } from '../Services/movie-service';
 
 export interface Role {
     roleId: string;
@@ -24,17 +26,12 @@ export class BrowseListComponent implements OnInit {
     movie : Movie = new Movie();
     trendingList : Trending[] = [];
 
-    MultiRoleFilterCtrl = new FormControl();
-    public MultiRoleCtrl: FormControl = new FormControl();
-    
-    filteredOptions: Observable<string[]>;
-    public filteredRoles: ReplaySubject<Role[]> = new ReplaySubject<Role[]>(1);
-    option: string;
-    @ViewChild('multiSelect') multiSelect: MatSelect;
-
-    constructor(public appBrowseListService: BrowseListService) { }
+    constructor(public appBrowseListService: BrowseListService,
+        public router: Router,
+        public appMovieService: MovieService) { }
 
     ngOnInit() {
+        /* Call the API to get all the Trending Movies */
         this.appBrowseListService.getTrendingJSON().pipe(first()).subscribe(data => {
             console.log(data);
             this.movie = data;
@@ -44,5 +41,11 @@ export class BrowseListComponent implements OnInit {
                 console.log(error);
             });
             console.log(this.trendingList);
+    }
+
+    showMovieItem(event,item){
+        console.log("Clicked");
+        this.router.navigate(["app-browse-list/edit-exam-session"]);
+        this.appMovieService.sendMessage(item);
     }
 }

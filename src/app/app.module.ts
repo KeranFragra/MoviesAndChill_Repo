@@ -16,6 +16,7 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import {MatIconModule} from '@angular/material/icon';
 import { BrowseListService } from './browse-list/browse-list.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     NgxMatSelectSearchModule,
     MatIconModule,
     HttpClientModule,
+    MatTooltipModule,
   ],
   providers: [HttpClientModule,BrowseListService],
   bootstrap: [AppComponent]
